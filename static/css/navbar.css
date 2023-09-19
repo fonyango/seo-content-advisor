@@ -1,0 +1,34 @@
+/* static/css/navbar.css */
+
+nav {
+    background-color: #b6300f; 
+    width: auto;
+    height: 60px;
+    color: #fff; 
+    padding: 10px 0; 
+    display: flex; 
+    justify-content: flex-end; 
+    font-size: 25px;
+}
+
+nav ul {
+    list-style-type: none; 
+    padding: 0; 
+    display: flex; 
+    gap: 20px;
+    margin-right: 50px;
+}
+
+nav li {
+    margin: 0; 
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff; 
+    outline: none;
+}
+
+nav a:hover {
+    text-decoration: underline; 
+}

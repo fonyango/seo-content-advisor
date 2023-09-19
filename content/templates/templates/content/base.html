@@ -1,0 +1,39 @@
+<!-- base.html -->
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contento</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}"/>
+
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'keywords' %}">Keywords</a></li>
+        <li><a href="{% url 'bigrams' %}">Bigrams</a></li>
+      </ul>
+    </nav>
+    <div class="header-container">
+        <h1>Contento</h1>
+        <hr></hr>
+        <h3>Optimize your blogs with our Intelligent Keyword Finder</h3>
+    </div>
+    <div class="content">{% block content %} {% endblock %}</div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+{% extends 'templates/content/base.html' %}
+
+{% load static %}
+{% block content %}
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <h3>Get your Two-Tail Keywords</h3>
+            <p>Enter your blog text here</p>    
+        </div>
+        <div class="form-input">
+            <form method="post" action="{% url 'bigrams' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+                <button type="button" id="clear-button">Clear</button>
+            </form>    
+        </div>
+        <div class="key_words">
+            <ul>
+              {% for word in bigrams %}
+                <li>
+                  <h4>{{ word.Bigram }}</h4>
+                  <p>{{ word.Frequency }}</p>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+    </div>
+    <script src="https://kit.fontawesome.com/f0b8a24555.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clearButton = document.getElementById('clear-button');
+            const form = document.querySelector('form');
+    
+            clearButton.addEventListener('click', function() {
+                if (form) {
+                    form.reset();
+                }
+            });
+        });
+    </script>    
+    <script>
+      window.addEventListener('load', function() {
+          // Check if flower data is available
+          const words = document.querySelectorAll('.key_words li');
+          if (words.length > 0) {
+              // Flower data is available, show text
+              const text = document.createElement('h3');
+              text.textContent = 'Here are the top 10 two-tail keywords in your article';
+              const wordsDiv = document.querySelector('.key_words');
+              wordsDiv.insertBefore(text, wordsDiv.firstChild);
+          }
+      });
+  </script>
+    </body>
+    {% endblock %}
